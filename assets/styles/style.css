@@ -224,16 +224,15 @@ body.no-scroll {
   height: 100%;
 }
 
-.container {
+body:not(.no-scroll) .container {
   max-width: 520px;
   width: 100%;
   margin: 0 auto;
 }
-
-.main_title {
+body:not(.no-scroll) .main_title {
   padding: 50px 0 0;
 }
-.main_title h4 {
+body:not(.no-scroll) .main_title h4 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 24px;
@@ -243,7 +242,7 @@ body.no-scroll {
   vertical-align: bottom;
   padding-top: 6px;
 }
-.main_title h1 {
+body:not(.no-scroll) .main_title h1 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 16px;
@@ -253,8 +252,7 @@ body.no-scroll {
   vertical-align: bottom;
   text-transform: uppercase;
 }
-
-.preview {
+body:not(.no-scroll) .preview {
   position: relative;
   background-image: url("../images/preview_background.png");
   background-repeat: no-repeat;
@@ -265,20 +263,29 @@ body.no-scroll {
   max-width: 330px;
   margin: 20px auto 0;
 }
-.preview::after {
-  content: " ";
+body:not(.no-scroll) .preview > svg {
   position: absolute;
   top: -40px;
-  background-image: url(../images/love_text.svg);
-  background-position: left;
-  background-repeat: no-repeat;
-  background-size: contain;
   width: 94px;
   height: 94px;
   z-index: 2;
   left: -13px;
 }
-.preview .text_love svg path {
+body:not(.no-scroll) .preview > svg .st0 {
+  opacity: 1;
+  fill: none;
+  stroke: #b50015;
+  stroke-width: 6;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+  animation: dash 15s linear forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+body:not(.no-scroll) .preview .text_love svg path {
   stroke-dasharray: 0 70;
   animation: znack 1s linear forwards, man_fill 2s forwards 1s;
 }
@@ -287,10 +294,10 @@ body.no-scroll {
     stroke-dasharray: 70 0;
   }
 }
-.preview .preview_main_img {
+body:not(.no-scroll) .preview .preview_main_img {
   padding: 25px 25px 14px;
 }
-.preview .preview_main_img img {
+body:not(.no-scroll) .preview .preview_main_img img {
   max-width: 282px;
   width: 100%;
   max-height: 280px;
@@ -300,10 +307,10 @@ body.no-scroll {
   -o-object-position: top;
      object-position: top;
 }
-.preview .preview_main_text {
+body:not(.no-scroll) .preview .preview_main_text {
   transform: rotateZ(2deg);
 }
-.preview .preview_main_text p {
+body:not(.no-scroll) .preview .preview_main_text p {
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
   font-size: 16px;
@@ -313,7 +320,7 @@ body.no-scroll {
   vertical-align: bottom;
   color: #221f1e;
 }
-.preview .preview_main_text p > span {
+body:not(.no-scroll) .preview .preview_main_text p > span {
   font-family: HelveticaNeueCyr-Medium;
   font-weight: 550;
   font-size: 16px;
@@ -322,11 +329,10 @@ body.no-scroll {
   text-align: center;
   vertical-align: bottom;
 }
-
-.initials {
+body:not(.no-scroll) .initials {
   position: relative;
 }
-.initials::after {
+body:not(.no-scroll) .initials::after {
   content: " ";
   position: absolute;
   top: -143px;
@@ -340,17 +346,17 @@ body.no-scroll {
   left: 0;
   right: 0;
 }
-.initials .main_initials {
+body:not(.no-scroll) .initials .main_initials {
   position: relative;
   display: flex;
   flex-direction: column;
   height: 160px;
   margin-top: 36px;
 }
-.initials .main_initials > span {
+body:not(.no-scroll) .initials .main_initials > span {
   color: #221f1e;
 }
-.initials .main_initials > span.initial_i {
+body:not(.no-scroll) .initials .main_initials > span.initial_i {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 56px;
@@ -362,8 +368,19 @@ body.no-scroll {
   top: 39%;
   left: 50.6%;
   transform: translate(-50%, -50%);
+  animation: initial_i 1.4s ease-in-out forwards;
+  opacity: 0;
 }
-.initials .main_initials > span.initial_s {
+@keyframes initial_i {
+  from {
+    left: 40.6%;
+  }
+  to {
+    left: 50.6%;
+    opacity: 1;
+  }
+}
+body:not(.no-scroll) .initials .main_initials > span.initial_s {
   position: absolute;
   font-family: Cinzel;
   font-weight: 400;
@@ -376,8 +393,19 @@ body.no-scroll {
   top: 55.4%;
   left: 53.8%;
   transform: translate(-50%, -28%);
+  animation: initial_s 1.4s ease-in-out forwards;
+  opacity: 0;
 }
-.initials .main_initials .background {
+@keyframes initial_s {
+  from {
+    left: 63.8%;
+  }
+  to {
+    left: 53.8%;
+    opacity: 1;
+  }
+}
+body:not(.no-scroll) .initials .main_initials .background {
   position: absolute;
   left: 50%;
   transform: translate(-50%, 0%);
@@ -391,45 +419,82 @@ body.no-scroll {
   opacity: 0.05;
   color: #221f1e;
 }
-.initials > p {
+body:not(.no-scroll) .initials .si-animation-container {
+  position: relative;
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+body:not(.no-scroll) .initials .si-animation-container .si-fly {
+  font-family: HelveticaNeueCyr-Medium;
+  font-weight: 550;
+  font-size: 48px;
+  opacity: 0;
+  text-align: center;
+  margin: 0 auto;
+}
+body:not(.no-scroll) .initials .si-animation-container .si-fly.view {
+  animation: siFly 3s forwards;
+}
+body:not(.no-scroll) .initials .si-animation-container .animated-text {
+  position: absolute;
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
   font-size: 16px;
   line-height: 140%;
   letter-spacing: 0%;
   text-align: center;
-  vertical-align: bottom;
+  opacity: 0;
+  display: inline-block;
 }
-.initials > p > span {
+body:not(.no-scroll) .initials .si-animation-container .animated-text.view {
+  animation: textAppear 1.5s ease-out forwards;
+  animation-delay: 3.2s;
+}
+body:not(.no-scroll) .initials .si-animation-container .animated-text span {
   font-family: HelveticaNeueCyr-Medium;
   font-weight: 550;
-  font-size: 16px;
-  line-height: 140%;
-  letter-spacing: 0%;
-  text-align: center;
-  vertical-align: bottom;
 }
-
-.guest_initial {
+@keyframes siFly {
+  0% {
+    transform: scale(2);
+    opacity: 0;
+  }
+  40% {
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+@keyframes textAppear {
+  to {
+    opacity: 1;
+  }
+}
+body:not(.no-scroll) .guest_initial {
   background-image: url("../images/guests_background.png");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 180px 0 70px;
 }
-.guest_initial .guest_text {
+body:not(.no-scroll) .guest_initial .guest_text {
+  position: relative;
   height: 430px;
   max-width: 320px;
   min-width: 320px;
   width: 100%;
   margin: 0 auto;
-  background-image: url("../images/invitation_letter.svg");
+  background-image: url("../images/invitation_letter.jpg");
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   padding: 130px 16px 0;
 }
-.guest_initial .guest_text h4 {
+body:not(.no-scroll) .guest_initial .guest_text h4 {
   font-family: Shelley Script LT CYR W05 Rg;
   font-weight: 400;
   font-size: 32px;
@@ -438,7 +503,7 @@ body.no-scroll {
   text-align: center;
   vertical-align: bottom;
 }
-.guest_initial .guest_text p {
+body:not(.no-scroll) .guest_initial .guest_text p {
   text-align: center;
   margin-top: 24px;
   font-family: HelveticaNeueCyr-Light;
@@ -450,7 +515,7 @@ body.no-scroll {
   vertical-align: bottom;
   color: #221f1e;
 }
-.guest_initial .guest_text p > span {
+body:not(.no-scroll) .guest_initial .guest_text p > span {
   font-family: Gilroy;
   font-weight: 600;
   font-size: 16px;
@@ -460,8 +525,26 @@ body.no-scroll {
   vertical-align: bottom;
   color: #221f1e;
 }
-
-.location .title h1 {
+body:not(.no-scroll) .guest_initial .guest_text > svg {
+  position: absolute;
+  top: 18px;
+  right: 0;
+}
+body:not(.no-scroll) .guest_initial .guest_text > svg path {
+  opacity: 1;
+  fill: none;
+  stroke: #464646;
+  stroke-width: 0.2;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  animation: dash 5s ease-in-out forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+body:not(.no-scroll) .location .title h1 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 34px;
@@ -471,7 +554,7 @@ body.no-scroll {
   vertical-align: bottom;
   text-transform: uppercase;
 }
-.location .title p {
+body:not(.no-scroll) .location .title p {
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
   font-size: 16px;
@@ -482,12 +565,31 @@ body.no-scroll {
   color: rgba(34, 31, 30, 0.5019607843);
   margin-top: 4px;
 }
-.location .calendar {
+body:not(.no-scroll) .location .calendar {
   position: relative;
   margin-top: 70px;
   padding-bottom: 80px;
 }
-.location .calendar::after {
+body:not(.no-scroll) .location .calendar > svg {
+  position: absolute;
+  top: -37px;
+  left: 51%;
+  width: 235px;
+  height: 235px;
+  transform: translate(-50%, 0%);
+  stroke-width: 2.4;
+  stroke-dasharray: 1200;
+  stroke-dashoffset: 1200;
+}
+body:not(.no-scroll) .location .calendar > svg.view {
+  animation: dash 1.6s ease-out forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+body:not(.no-scroll) .location .calendar::after {
   content: " ";
   position: absolute;
   bottom: -78px;
@@ -501,34 +603,21 @@ body.no-scroll {
   left: 0;
   right: 0;
 }
-.location .calendar ul {
+body:not(.no-scroll) .location .calendar ul {
   display: flex;
   align-items: center;
   text-align: center;
 }
-.location .calendar ul li {
+body:not(.no-scroll) .location .calendar ul li {
   position: relative;
   width: 100%;
   border: 0.5px solid #221f1e;
 }
-.location .calendar ul li:first-child, .location .calendar ul li:last-child {
+body:not(.no-scroll) .location .calendar ul li:first-child, body:not(.no-scroll) .location .calendar ul li:last-child {
   border-left: 0;
   border-right: 0;
 }
-.location .calendar ul li:nth-child(2)::after {
-  content: " ";
-  position: absolute;
-  width: 235px;
-  height: 235px;
-  background-image: url(../images/selected_date_icon.svg);
-  background-position: top;
-  background-repeat: no-repeat;
-  background-size: contain;
-  top: -37px;
-  left: 54%;
-  transform: translate(-50%, 0%);
-}
-.location .calendar ul li .day {
+body:not(.no-scroll) .location .calendar ul li .day {
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
   font-size: 16px;
@@ -542,13 +631,13 @@ body.no-scroll {
   padding: 8px 0;
   color: #221f1e;
 }
-.location .calendar ul li .date {
+body:not(.no-scroll) .location .calendar ul li .date {
   display: flex;
   align-items: center;
   flex-direction: column;
   padding: 12px 0 0;
 }
-.location .calendar ul li .date > span.month {
+body:not(.no-scroll) .location .calendar ul li .date > span.month {
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
   font-size: 12px;
@@ -560,7 +649,7 @@ body.no-scroll {
   text-transform: uppercase;
   margin-bottom: 16px;
 }
-.location .calendar ul li .date > span.number {
+body:not(.no-scroll) .location .calendar ul li .date > span.number {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 72px;
@@ -568,8 +657,7 @@ body.no-scroll {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
-
-.restaurant {
+body:not(.no-scroll) .restaurant {
   position: relative;
   background-image: url("../images/complex_background.jpg");
   background-position: top;
@@ -579,13 +667,13 @@ body.no-scroll {
   padding: 102px 40px 0;
   margin-bottom: 100px;
 }
-.restaurant h4 {
+body:not(.no-scroll) .restaurant h4 {
   display: flex;
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
 }
-.restaurant h4 span {
+body:not(.no-scroll) .restaurant h4 span {
   font-family: HelveticaNeueCyr-Thin;
   font-weight: 300;
   font-size: 32px;
@@ -594,10 +682,10 @@ body.no-scroll {
   vertical-align: bottom;
   color: #ffffff;
 }
-.restaurant h4 span:nth-child(2) {
+body:not(.no-scroll) .restaurant h4 span:nth-child(2) {
   margin-left: auto;
 }
-.restaurant h4 span:nth-child(3) {
+body:not(.no-scroll) .restaurant h4 span:nth-child(3) {
   margin: 16px auto 0;
   font-family: Cinzel;
   font-weight: 400;
@@ -608,10 +696,10 @@ body.no-scroll {
   vertical-align: bottom;
   text-transform: uppercase;
 }
-.restaurant .detail_info {
+body:not(.no-scroll) .restaurant .detail_info {
   margin-top: 112px;
 }
-.restaurant .detail_info li {
+body:not(.no-scroll) .restaurant .detail_info li {
   position: relative;
   font-family: HelveticaNeueCyr-Medium;
   font-weight: 550;
@@ -626,7 +714,7 @@ body.no-scroll {
   display: flex;
   align-items: center;
 }
-.restaurant .detail_info li.date::before {
+body:not(.no-scroll) .restaurant .detail_info li.date::before {
   content: " ";
   position: absolute;
   width: 24px;
@@ -636,7 +724,7 @@ body.no-scroll {
   background-size: contain;
   left: 0;
 }
-.restaurant .detail_info li.location::before {
+body:not(.no-scroll) .restaurant .detail_info li.location::before {
   content: " ";
   position: absolute;
   width: 24px;
@@ -646,7 +734,7 @@ body.no-scroll {
   background-size: contain;
   left: 0;
 }
-.restaurant .detail_info li.time::before {
+body:not(.no-scroll) .restaurant .detail_info li.time::before {
   content: " ";
   position: absolute;
   width: 24px;
@@ -656,7 +744,7 @@ body.no-scroll {
   background-size: contain;
   left: 0;
 }
-.restaurant .location_link {
+body:not(.no-scroll) .restaurant .location_link {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -683,7 +771,7 @@ body.no-scroll {
   height: 160px;
   border-radius: 100%;
 }
-.restaurant .location_link > span {
+body:not(.no-scroll) .restaurant .location_link > span {
   text-decoration: underline;
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
@@ -699,16 +787,37 @@ body.no-scroll {
           text-decoration-skip-ink: auto;
   color: #fff;
 }
-
-.program {
+body:not(.no-scroll) .program {
   position: relative;
   background-color: #b50015;
   padding-top: 88px;
 }
-.program::before {
+body:not(.no-scroll) .program > svg {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  width: 68px;
+  height: 102px;
+}
+body:not(.no-scroll) .program > svg path {
+  fill: none;
+  stroke-width: 0.2;
+  stroke-dasharray: 300;
+  stroke-dashoffset: 300;
+  stroke: #fff;
+}
+body:not(.no-scroll) .program > svg.view path {
+  animation: dash 5s ease-out forwards;
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+body:not(.no-scroll) .program::before {
   content: " ";
   position: absolute;
-  top: 0;
+  top: -2px;
   left: 0;
   right: 0;
   background-image: url("../images/background_paper_2.svg");
@@ -717,18 +826,7 @@ body.no-scroll {
   height: 80px;
   width: 100%;
 }
-.program::after {
-  content: " ";
-  position: absolute;
-  top: 42px;
-  left: 0;
-  background-image: url("../images/background_flower.svg");
-  background-position: top;
-  background-size: cover;
-  width: 68px;
-  height: 102px;
-}
-.program .title h4 {
+body:not(.no-scroll) .program .title h4 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 40px;
@@ -739,7 +837,7 @@ body.no-scroll {
   text-transform: uppercase;
   color: #fff;
 }
-.program .title p {
+body:not(.no-scroll) .program .title p {
   margin-top: 4px;
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
@@ -750,7 +848,7 @@ body.no-scroll {
   vertical-align: bottom;
   color: rgba(255, 255, 255, 0.8);
 }
-.program > ul {
+body:not(.no-scroll) .program > ul {
   margin-top: 32px;
   display: flex;
   flex-direction: column;
@@ -758,7 +856,7 @@ body.no-scroll {
   align-items: center;
   padding-bottom: 40px;
 }
-.program > ul li {
+body:not(.no-scroll) .program > ul li {
   position: relative;
   border-radius: 24px;
   background-color: #f9f5f2;
@@ -766,10 +864,10 @@ body.no-scroll {
   width: 100%;
   padding: 20px 20px 20px 44px;
 }
-.program > ul li:not(:last-child) {
+body:not(.no-scroll) .program > ul li:not(:last-child) {
   margin-bottom: 16px;
 }
-.program > ul li .title {
+body:not(.no-scroll) .program > ul li .title {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -781,7 +879,7 @@ body.no-scroll {
   vertical-align: bottom;
   margin-bottom: 8px;
 }
-.program > ul li .title b {
+body:not(.no-scroll) .program > ul li .title b {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 32px;
@@ -790,12 +888,12 @@ body.no-scroll {
   vertical-align: bottom;
   text-transform: uppercase;
 }
-.program > ul li .title > span {
+body:not(.no-scroll) .program > ul li .title > span {
   height: 1px;
   width: 16px;
   background-color: #221f1e;
 }
-.program > ul li p {
+body:not(.no-scroll) .program > ul li p {
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
   font-size: 14px;
@@ -803,7 +901,7 @@ body.no-scroll {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
-.program > ul li .icon {
+body:not(.no-scroll) .program > ul li .icon {
   position: absolute;
   left: -24px;
   top: 50%;
@@ -817,12 +915,11 @@ body.no-scroll {
   justify-content: center;
   box-shadow: 0px 1px 3px 1px rgba(0, 0, 0, 0.1490196078);
 }
-
-.wishlist {
+body:not(.no-scroll) .wishlist {
   position: relative;
   padding-top: 56px;
 }
-.wishlist .title h4 {
+body:not(.no-scroll) .wishlist .title h4 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 40px;
@@ -833,7 +930,7 @@ body.no-scroll {
   text-transform: uppercase;
   color: #221f1e;
 }
-.wishlist .title p {
+body:not(.no-scroll) .wishlist .title p {
   margin-top: 4px;
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
@@ -844,7 +941,7 @@ body.no-scroll {
   vertical-align: bottom;
   color: rgba(34, 31, 30, 0.5019607843);
 }
-.wishlist > ul {
+body:not(.no-scroll) .wishlist > ul {
   position: relative;
   padding: 54px 24px 0;
   background-image: url("../images/wishlist_bg.png");
@@ -855,7 +952,7 @@ body.no-scroll {
   width: 100%;
   margin: 22px auto 0;
 }
-.wishlist > ul::after {
+body:not(.no-scroll) .wishlist > ul::after {
   content: " ";
   position: absolute;
   width: 40px;
@@ -867,14 +964,14 @@ body.no-scroll {
   left: 47.5%;
   transform: translate(0%, -50%);
 }
-.wishlist > ul li:not(:last-child) {
+body:not(.no-scroll) .wishlist > ul li:not(:last-child) {
   padding: 24px 0;
   border-top: 1px solid rgba(34, 31, 30, 0.1019607843);
 }
-.wishlist > ul li .icon {
+body:not(.no-scroll) .wishlist > ul li .icon {
   padding-bottom: 12px;
 }
-.wishlist > ul li h4 {
+body:not(.no-scroll) .wishlist > ul li h4 {
   padding-bottom: 4px;
   font-family: HelveticaNeueCyr-Medium;
   font-weight: 550;
@@ -883,7 +980,7 @@ body.no-scroll {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
-.wishlist > ul li p {
+body:not(.no-scroll) .wishlist > ul li p {
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
   font-size: 14px;
@@ -891,32 +988,31 @@ body.no-scroll {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
-.wishlist .colors {
+body:not(.no-scroll) .wishlist .colors {
   display: flex;
   align-items: center;
   padding-bottom: 24px;
   gap: 8px;
 }
-.wishlist .colors span {
+body:not(.no-scroll) .wishlist .colors span {
   width: 48px;
   height: 48px;
   border-radius: 100%;
 }
-.wishlist .colors span:first-child {
+body:not(.no-scroll) .wishlist .colors span:first-child {
   background-color: #221f1e;
 }
-.wishlist .colors span:nth-child(2) {
+body:not(.no-scroll) .wishlist .colors span:nth-child(2) {
   border: 1px solid rgba(34, 31, 30, 0.1019607843);
   background-color: #ffffff;
 }
-.wishlist .colors span:nth-child(3) {
+body:not(.no-scroll) .wishlist .colors span:nth-child(3) {
   background-color: #fff9f1;
 }
-
-.links {
+body:not(.no-scroll) .links {
   padding-top: 56px;
 }
-.links .title h4 {
+body:not(.no-scroll) .links .title h4 {
   font-family: Cinzel;
   font-weight: 400;
   font-size: 40px;
@@ -927,7 +1023,7 @@ body.no-scroll {
   text-transform: uppercase;
   color: #221f1e;
 }
-.links .title p {
+body:not(.no-scroll) .links .title p {
   margin-top: 4px;
   font-family: HelveticaNeueCyr-Light;
   font-weight: 300;
@@ -940,7 +1036,7 @@ body.no-scroll {
   max-width: 246px;
   margin: 0 auto;
 }
-.links .list {
+body:not(.no-scroll) .links .list {
   position: relative;
   max-width: 310px;
   width: 100%;
@@ -951,7 +1047,7 @@ body.no-scroll {
   padding: 24px 0;
   margin-top: 34px;
 }
-.links .list p {
+body:not(.no-scroll) .links .list p {
   font-family: HelveticaNeueCyr-Medium;
   font-weight: 550;
   font-size: 16px;
@@ -960,13 +1056,13 @@ body.no-scroll {
   vertical-align: bottom;
   margin-bottom: 4px;
 }
-.links .list ul {
+body:not(.no-scroll) .links .list ul {
   margin-left: 24px;
   gap: 4px;
   display: flex;
   flex-direction: column;
 }
-.links .list ul li {
+body:not(.no-scroll) .links .list ul li {
   list-style: disc;
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
@@ -975,7 +1071,7 @@ body.no-scroll {
   letter-spacing: 0%;
   vertical-align: bottom;
 }
-.links > a {
+body:not(.no-scroll) .links > a {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1000,7 +1096,7 @@ body.no-scroll {
   height: 160px;
   border-radius: 100%;
 }
-.links > a > span {
+body:not(.no-scroll) .links > a > span {
   text-decoration: underline;
   font-family: HelveticaNeueCyr-Roman;
   font-weight: 400;
@@ -1016,8 +1112,7 @@ body.no-scroll {
           text-decoration-skip-ink: auto;
   color: #fff;
 }
-
-.withLove {
+body:not(.no-scroll) .withLove {
   position: relative;
   background-image: url("../images/withLove_bg.png");
   background-repeat: no-repeat;
@@ -1029,7 +1124,7 @@ body.no-scroll {
   margin: 20px auto 0;
   margin-bottom: 40px;
 }
-.withLove::after {
+body:not(.no-scroll) .withLove::after {
   content: " ";
   position: absolute;
   top: -44px;
@@ -1042,10 +1137,10 @@ body.no-scroll {
   z-index: 2;
   left: -14px;
 }
-.withLove .preview_main_img {
+body:not(.no-scroll) .withLove .preview_main_img {
   padding: 25px 25px 14px;
 }
-.withLove .preview_main_img img {
+body:not(.no-scroll) .withLove .preview_main_img img {
   max-width: 282px;
   width: 100%;
   margin: 0 auto;
@@ -1084,6 +1179,35 @@ body.no-scroll {
 }
 .preloader > .icon {
   margin-bottom: 8px;
+}
+.preloader > .icon svg .ring {
+  stroke: #221f1e;
+  stroke-dasharray: 80;
+  stroke-dashoffset: 1;
+  animation: ringAnim 2.5s linear forwards;
+}
+.preloader > .icon svg .ring_girl_heart {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+  animation: heartAnim 2.5s linear forwards;
+}
+@keyframes ringAnim {
+  100% {
+    stroke-dashoffset: 0;
+  }
+  0% {
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+  }
+}
+@keyframes heartAnim {
+  100% {
+    stroke-dashoffset: 0;
+  }
+  0% {
+    stroke-dasharray: 30;
+    stroke-dashoffset: 30;
+  }
 }
 .preloader h2 {
   font-family: Cinzel;
