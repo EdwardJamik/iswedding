@@ -256,8 +256,8 @@ body:not(.no-scroll) {
         display: inline-block;
 
         &.view {
-          animation: textAppear 1.5s ease-out forwards;
-          animation-delay: 3.2s;
+          animation: textAppear 2.5s ease-out forwards;
+          // animation-delay: 3.2s;
         }
         span {
           font-family: HelveticaNeueCyr-Medium;
@@ -266,7 +266,6 @@ body:not(.no-scroll) {
       }
     }
 
-    // Анімації
     @keyframes siFly {
       0% {
         transform: scale(2);
@@ -973,6 +972,19 @@ body:not(.no-scroll) {
         color: #221f1e80;
         max-width: 246px;
         margin: 0 auto;
+        animation: bliks 2.2s ease-in-out infinite;
+      }
+
+      @keyframes bliks {
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0;
+        }
+        0% {
+          opacity: 1;
+        }
       }
     }
 
@@ -1017,6 +1029,7 @@ body:not(.no-scroll) {
     }
 
     & > a {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1041,6 +1054,35 @@ body:not(.no-scroll) {
       width: 160px;
       height: 160px;
       border-radius: 100%;
+
+      &::before {
+        position: absolute;
+        content: "";
+        bottom: 9px;
+        right: 10px;
+        width: 44px;
+        height: 44px;
+        background-image: url(../images/tap.svg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        transform: rotateZ(-34deg);
+        animation: tap-bliks 2.2s ease-in-out infinite;
+      }
+
+      @keyframes tap-bliks {
+        100% {
+          opacity: 1;
+          transform: scale(1.09) rotateZ(-34deg);
+        }
+        50% {
+          transform: scale(1) rotateZ(-34deg);
+          // opacity: 0;
+        }
+        0% {
+          transform: scale(1.09) rotateZ(-34deg);
+          opacity: 1;
+        }
+      }
 
       & > span {
         text-decoration: underline;

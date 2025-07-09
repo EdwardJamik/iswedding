@@ -449,8 +449,7 @@ body:not(.no-scroll) .initials .si-animation-container .animated-text {
   display: inline-block;
 }
 body:not(.no-scroll) .initials .si-animation-container .animated-text.view {
-  animation: textAppear 1.5s ease-out forwards;
-  animation-delay: 3.2s;
+  animation: textAppear 2.5s ease-out forwards;
 }
 body:not(.no-scroll) .initials .si-animation-container .animated-text span {
   font-family: HelveticaNeueCyr-Medium;
@@ -1035,6 +1034,18 @@ body:not(.no-scroll) .links .title p {
   color: rgba(34, 31, 30, 0.5019607843);
   max-width: 246px;
   margin: 0 auto;
+  animation: bliks 2.2s ease-in-out infinite;
+}
+@keyframes bliks {
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  0% {
+    opacity: 1;
+  }
 }
 body:not(.no-scroll) .links .list {
   position: relative;
@@ -1072,6 +1083,7 @@ body:not(.no-scroll) .links .list ul li {
   vertical-align: bottom;
 }
 body:not(.no-scroll) .links > a {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1095,6 +1107,32 @@ body:not(.no-scroll) .links > a {
   width: 160px;
   height: 160px;
   border-radius: 100%;
+}
+body:not(.no-scroll) .links > a::before {
+  position: absolute;
+  content: "";
+  bottom: 9px;
+  right: 10px;
+  width: 44px;
+  height: 44px;
+  background-image: url(../images/tap.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  transform: rotateZ(-34deg);
+  animation: tap-bliks 2.2s ease-in-out infinite;
+}
+@keyframes tap-bliks {
+  100% {
+    opacity: 1;
+    transform: scale(1.09) rotateZ(-34deg);
+  }
+  50% {
+    transform: scale(1) rotateZ(-34deg);
+  }
+  0% {
+    transform: scale(1.09) rotateZ(-34deg);
+    opacity: 1;
+  }
 }
 body:not(.no-scroll) .links > a > span {
   text-decoration: underline;
