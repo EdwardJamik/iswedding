@@ -1661,18 +1661,18 @@
     if (guestParam) {
 
       const guestIndex = parseInt(guestParam.split('-')[1])
-      const linkIndex = parseInt(linkParam.split('-')[1])
+      const linkIndex = linkParam ? parseInt(linkParam.split('-')[1]) : 1
 
       if (!isNaN(guestIndex) && guests[guestIndex]) {
         const guest = guests[guestIndex]
 
         const titleText = guest.type === 0 ? "Дорогий" : guest.type === 2 ? "Дорога" : "Дорогі"
+        document.querySelector(".guest_title").textContent = titleText
+        document.querySelector(".guest_name").textContent = guest.name + "!"
 
         const link_0 = "https://t.me/ISWedding_Bot?start=w40765774--old"
         const link_1 = "https://t.me/ISWedding_Bot?start=w40765774--young"
 
-        document.querySelector(".guest_title").textContent = titleText
-        document.querySelector(".guest_name").textContent = guest.name + "!"
         document.querySelector(".tg_link").href = linkIndex === 0 ? link_0 : link_1
       }
     }
