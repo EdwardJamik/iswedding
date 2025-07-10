@@ -336,7 +336,7 @@ body:not(.no-scroll) .initials::after {
   content: " ";
   position: absolute;
   top: -132px;
-  background-image: url(../images/p_left.svg);
+  background-image: url(../images/p_left.png);
   background-position: left;
   background-repeat: no-repeat;
   background-size: contain;
@@ -349,7 +349,7 @@ body:not(.no-scroll) .initials::before {
   content: " ";
   position: absolute;
   top: -132px;
-  background-image: url(../images/p_right.svg);
+  background-image: url(../images/p_right.png);
   background-position: right;
   background-repeat: no-repeat;
   background-size: contain;
