@@ -671,6 +671,15 @@ body:not(.no-scroll) .restaurant h4 {
   flex-direction: column;
   width: 100%;
   margin: 0 auto;
+  opacity: 0;
+}
+body:not(.no-scroll) .restaurant h4.view {
+  animation: fadein 1.6s ease-out forwards;
+}
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
 }
 body:not(.no-scroll) .restaurant h4 span {
   font-family: HelveticaNeueCyr-Thin;
@@ -1119,7 +1128,7 @@ body:not(.no-scroll) .links > a::before {
   background-repeat: no-repeat;
   background-size: cover;
   transform: rotateZ(-34deg);
-  animation: tap-bliks 2.2s ease-in-out infinite;
+  animation: tap-bliks 1.2s ease-in-out infinite;
 }
 @keyframes tap-bliks {
   100% {
@@ -1214,6 +1223,43 @@ body:not(.no-scroll) .withLove .preview_main_img img {
   opacity: 0;
   visibility: hidden;
   transform: scale(0.95);
+}
+.preloader > button {
+  background-color: #b50015;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  color: #fff;
+  margin-top: 14px;
+  font-family: HelveticaNeueCyr-Roman;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 140%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: bottom;
+  text-decoration-style: solid;
+  text-decoration-thickness: 0%;
+  -webkit-text-decoration-skip: ink;
+          text-decoration-skip-ink: auto;
+  animation: buttonAnim 1.5s linear infinite;
+}
+.preloader > button.hidden {
+  opacity: 0 !important;
+  z-index: -1;
+}
+@keyframes buttonAnim {
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 .preloader > .icon {
   margin-bottom: 8px;

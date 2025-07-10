@@ -460,10 +460,10 @@
     <section>
       <div class="container">
         <div class="restaurant">
-          <h4>
-            <span data-aos="zoom-in-left">Відпочинковий</span>
-            <span data-aos="zoom-in-right">комплекс</span>
-            <span data-aos="zoom-in-up">Nashe</span>
+          <h4 class="anim">
+            <span>Відпочинковий</span>
+            <span>комплекс</span>
+            <span>Nashe</span>
           </h4>
 
           <ul class="detail_info">
@@ -1244,24 +1244,26 @@
         </div>
 
         <p class="description">Вмикай звук — далі буде красиво!</p>
+        <button id="start-music" class="hidden">Далі</button>
       </div>
     </section>
   </main>
-  <!-- <button id="start-music">🔊 Натисни для запуску музики</button>
-  <audio id="bg-music" src="./assets/audio.mp3" loop></audio> -->
+  <!-- <button id="start-music">🔊 Натисни для запуску музики</button>-->
+  <audio id="bg-music" src="./assets/audio.mp3" loop></audio>
 
-  <!-- <script>
+  <script>
     const btn = document.getElementById('start-music')
     const audio = document.getElementById('bg-music')
 
     btn.addEventListener('click', () => {
+      hidePreloader()
       audio.play().then(() => {
-        btn.style.display = 'none' // Сховати кнопку
+        btn.style.display = 'none'
       }).catch(err => {
         console.error("Не вдалося відтворити:", err)
       })
     });
-  </script> -->
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
     // window.addEventListener('DOMContentLoaded', () => {
@@ -1302,6 +1304,7 @@
   </script>
 
   <script>
+    const btnnext = document.getElementById('start-music')
     function hidePreloader() {
       const preloader = document.getElementById('preloader')
 
@@ -1314,13 +1317,13 @@
       }, 1000)
     }
 
-    window.addEventListener('load', () => {
-      setTimeout(hidePreloader, 5000)
-    })
+    // window.addEventListener('load', () => {
+    //   setTimeout(hidePreloader, 5000)
+    // })
 
     setTimeout(() => {
       if (document.getElementById('preloader')) {
-        hidePreloader()
+        btnnext.classList.remove('hidden')
       }
     }, 5000)
 
