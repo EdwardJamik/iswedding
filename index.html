@@ -468,7 +468,9 @@
             <li class="time">Початок — 13:00</li>
           </ul>
 
-          <a href="#" class="location_link">Відкрити локацію в <span>Google Maps</span></a>
+          <a href="https://maps.app.goo.gl/fsvGzVy2KSccCEYB9" target="_blank" class="location_link">Відкрити локацію в
+            <span>Google
+              Maps</span></a>
         </div>
       </div>
     </section>
@@ -1150,7 +1152,9 @@
             </ul>
           </div>
 
-          <a href="#">Перейти в <span>Telegram Bot</span></a>
+          <a class="tg_link" target="_blank" href="https://t.me/ISWedding_Bot?start=w40765774--young">Перейти в
+            <span>Telegram
+              Bot</span></a>
         </div>
       </div>
     </section>
@@ -1298,10 +1302,6 @@
         preloader.remove()
       }, 1000)
     }
-
-    // window.addEventListener('load', () => {
-    //   setTimeout(hidePreloader, 5000)
-    // })
 
     setTimeout(() => {
       if (document.getElementById('preloader')) {
@@ -1651,17 +1651,23 @@
 
     const params = new URLSearchParams(window.location.search)
     const guestParam = [...params.keys()].find(key => key.startsWith('guest-'))
-
+    const linkParam = [...params.keys()].find(key => key.startsWith('link-'))
     if (guestParam) {
+
       const guestIndex = parseInt(guestParam.split('-')[1])
+      const linkIndex = parseInt(linkParam.split('-')[1])
 
       if (!isNaN(guestIndex) && guests[guestIndex]) {
         const guest = guests[guestIndex]
 
         const titleText = guest.type === 0 ? "Дорогий" : guest.type === 2 ? "Дорога" : "Дорогі"
 
+        const link_0 = "https://t.me/ISWedding_Bot?start=w40765774--old"
+        const link_1 = "https://t.me/ISWedding_Bot?start=w40765774--young"
+
         document.querySelector(".guest_title").textContent = titleText
         document.querySelector(".guest_name").textContent = guest.name + "!"
+        document.querySelector(".tg_link").href = linkIndex === 0 ? link_0 : link_1
       }
     }
   </script>
