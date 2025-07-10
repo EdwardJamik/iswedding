@@ -10,9 +10,9 @@
   <title>Wedding SI</title>
 </head>
 
-<body class="no-scroll">
+<!-- <body class="no-scroll"> -->
 
-  <!-- <body> -->
+<body>
   <main>
     <section>
       <div class="container">
@@ -104,12 +104,7 @@
             <h4 class="guest_title">Дорогі</h4>
             <h4 class="guest_name">Діма та Оля!</h4>
 
-            <p>
-              Ми щасливі запросити вас <br /> розділити з нами один з <br /> найважливіших днів нашого життя
-              <br /><span>
-                — день
-                створення нашої сім’ї.</span>
-            </p>
+            <p id="typed-text" class="typed_text anim"></p>
 
             <svg class="anim" width="132" height="149" viewBox="0 0 132 149" fill="none"
               xmlns="http://www.w3.org/2000/svg">
@@ -1172,7 +1167,7 @@
       </div>
     </section>
 
-    <section>
+    <!-- <section>
       <div class="preloader" id="preloader">
         <div class="icon">
           <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1246,9 +1241,8 @@
         <p class="description">Вмикай звук — далі буде красиво!</p>
         <button id="start-music" class="hidden">Далі</button>
       </div>
-    </section>
+    </section> -->
   </main>
-  <!-- <button id="start-music">🔊 Натисни для запуску музики</button>-->
   <audio id="bg-music" src="./assets/audio.mp3" loop></audio>
 
   <script>
@@ -1266,16 +1260,6 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
   <script>
-    // window.addEventListener('DOMContentLoaded', () => {
-    //   const audio = document.getElementById('bg-music')
-    //   setTimeout(() => {
-    //     audio.muted = false
-    //     audio.play().catch(err => {
-    //       console.warn("Autoplay із звуком заблоковано:", err.message)
-    //     })
-    //   }, 1000)
-    // });
-
     document.addEventListener('DOMContentLoaded', function () {
       AOS.init({
         duration: 800,
@@ -1325,7 +1309,7 @@
       if (document.getElementById('preloader')) {
         btnnext.classList.remove('hidden')
       }
-    }, 5000)
+    }, 3000)
 
     function isElementHalfVisible(el) {
       const rect = el.getBoundingClientRect()
@@ -1341,8 +1325,11 @@
       if (!document.body.classList.contains('no-scroll')) {
         const svgs = document.querySelectorAll('.anim')
         svgs.forEach(svg => {
-          if (isElementHalfVisible(svg) && !svg.classList.contains('view')) {
+          if (isElementHalfVisible(svg) && !svg.classList.contains('view') && !svg.classList.contains('typed_text')) {
             svg.classList.add('view')
+          } else if (isElementHalfVisible(svg) && svg.classList.contains('typed_text') && !svg.classList.contains('view')) {
+            svg.classList.add('view')
+            typeText()
           }
         })
       }
@@ -1350,6 +1337,31 @@
 
     window.addEventListener('scroll', handleScroll)
     window.addEventListener('load', handleScroll);
+  </script>
+
+  <script>
+    const text = `Ми щасливі запросити вас 
+розділити з нами один з 
+найважливіших днів нашого життя
+— день створення нашої сім’ї.`
+
+    const element = document.getElementById("typed-text")
+    let index = 0
+
+    function typeText() {
+      if (index < text.length) {
+        const char = text[index]
+        if (char === "\n") {
+          element.innerHTML += "<br />"
+        } else {
+          element.innerHTML += char
+        }
+        index++
+        setTimeout(typeText, 50)
+      }
+    }
+
+
   </script>
 
   <script>
